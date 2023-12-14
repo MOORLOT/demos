@@ -15,4 +15,9 @@ class AppConfig {
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
+
+    @Bean
+    public AspectConfig aspectConfig() {
+        return new AspectConfig();
+    }
 }

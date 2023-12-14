@@ -7,15 +7,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class App {
-    private final Service topLevel;
+    private final Service topLevel0;
+    private final Service topLevel1;
 
     @Autowired
-    public App(@Qualifier("bean1") Service topLevel) {
-        this.topLevel = topLevel;
+    public App(@Qualifier("bean1") Service topLevel0,@Qualifier ("bean2") Service topLevel1) {
+        this.topLevel0 = topLevel0;
+        this.topLevel1 = topLevel1;
     }
 
     public void run() {
-        topLevel.performAction();
+        topLevel0.performAction();
+        topLevel1.performAction();
     }
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
