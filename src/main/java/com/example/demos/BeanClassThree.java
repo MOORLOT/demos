@@ -1,18 +1,20 @@
 package com.example.demos;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("bean3")
 public class BeanClassThree implements Service {
-    private final String message;
+    private String message;
 
-    // Конструктор за замовчуванням для Spring DI
-    public BeanClassThree() {
-        this.message = null; // або встановіть значення за замовчуванням, якщо потрібно
+    @Value("${third.level.message}")
+    private String defaultMessage;
+
+    @PostConstruct
+    public void init() {
+        this.message = defaultMessage;
     }
-
-    public BeanClassThree(String message) {
-        this.message = message;
-    }
-
-
 
     @Override
     public void performAction() {
